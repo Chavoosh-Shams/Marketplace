@@ -2,7 +2,7 @@
 
 namespace Marketplace.Domain.Frameworks.Abstracts
 {
-    internal interface IDbSetEntity
+    public interface IDbSetEntity
     {
     }
 }
