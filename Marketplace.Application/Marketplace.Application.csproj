@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Marketplace.Domain\Marketplace.Domain.csproj" />
+    <ProjectReference Include="..\Marketplace.EfCore\Marketplace.EfCore.csproj" />
+    <ProjectReference Include="..\Marketplace.RepositoryDesignPattern\Marketplace.RepositoryDesignPattern.csproj" />
+    <ProjectReference Include="..\ResponseFramework\ResponseFramework.csproj" />
+  </ItemGroup>
+
 </Project>

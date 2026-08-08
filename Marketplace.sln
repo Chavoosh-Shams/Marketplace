@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.EfCore", "Marke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.RepositoryDesignPattern", "Marketplace.RepositoryDesignPattern\Marketplace.RepositoryDesignPattern.csproj", "{3B36A721-B6CF-449D-8F4A-BE824E6FD293}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Common", "02_Common", "{5A0D497F-4B90-437A-912E-4B6745FA5D36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponseFramework", "ResponseFramework\ResponseFramework.csproj", "{CE574C19-9E7E-46B5-9869-E1D5F37E8716}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{3B36A721-B6CF-449D-8F4A-BE824E6FD293}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B36A721-B6CF-449D-8F4A-BE824E6FD293}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B36A721-B6CF-449D-8F4A-BE824E6FD293}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE574C19-9E7E-46B5-9869-E1D5F37E8716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE574C19-9E7E-46B5-9869-E1D5F37E8716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE574C19-9E7E-46B5-9869-E1D5F37E8716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE574C19-9E7E-46B5-9869-E1D5F37E8716}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +78,7 @@ Global
 		{ADCB5F40-F088-4AE6-BB32-14EC12537E03} = {00A2BA0B-E36C-42C5-B3DA-05C3B8BE94FD}
 		{5383B9A1-ED40-4136-AE28-6E8110C89D8E} = {9CF8A30D-DDD5-4C94-AB5E-A92DD3FDFCBE}
 		{3B36A721-B6CF-449D-8F4A-BE824E6FD293} = {9CF8A30D-DDD5-4C94-AB5E-A92DD3FDFCBE}
+		{CE574C19-9E7E-46B5-9869-E1D5F37E8716} = {5A0D497F-4B90-437A-912E-4B6745FA5D36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE75AB2D-9B1A-4DF6-A738-5D43B7D0A708}

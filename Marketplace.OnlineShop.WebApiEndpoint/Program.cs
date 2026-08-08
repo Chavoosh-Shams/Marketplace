@@ -1,4 +1,8 @@
+using InvoiceApp.ApplicationServices.Services.Contracts;
+using Marketplace.Application.Services;
 using Marketplace.EfCore;
+using Marketplace.RepositoryDesignPattern.Contracts;
+using Marketplace.RepositoryDesignPattern.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,10 +15,17 @@ builder.Services.AddDbContext<MarketplaceDbContext>(options => options.UseSqlSer
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<MarketplaceDbContext>();
 #endregion
 
+#region [- AddScoped<>() -]
 
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerApplicationService, CustomerApplicationService>();
+
+#endregion
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -22,9 +33,13 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
 
 app.UseAuthorization();
 
