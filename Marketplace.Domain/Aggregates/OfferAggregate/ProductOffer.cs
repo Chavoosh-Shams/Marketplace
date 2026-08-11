@@ -1,7 +1,7 @@
 ﻿using Marketplace.Domain.Frameworks.Abstracts;
 using Marketplace.Domain.Aggregates.OrderAggregates;
-using Marketplace.Domain.Aggregates.SellerAggregates;
 using Marketplace.Domain.Aggregates.ProductAggregates;
+using Marketplace.Domain.Aggregates.PersonAggregates;
 
 namespace Marketplace.Domain.Aggregates.OfferAggregate
 {

@@ -15,16 +15,13 @@ namespace Marketplace.EfCore.Migrations
                 name: "Product");
 
             migrationBuilder.EnsureSchema(
-                name: "Customer");
+                name: "Person");
 
             migrationBuilder.EnsureSchema(
                 name: "Order");
 
             migrationBuilder.EnsureSchema(
                 name: "Marketplace");
-
-            migrationBuilder.EnsureSchema(
-                name: "Seller");
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
@@ -82,7 +79,7 @@ namespace Marketplace.EfCore.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Customer",
-                schema: "Customer",
+                schema: "Person",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -101,7 +98,7 @@ namespace Marketplace.EfCore.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Seller",
-                schema: "Seller",
+                schema: "Person",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -266,7 +263,7 @@ namespace Marketplace.EfCore.Migrations
                     table.ForeignKey(
                         name: "FK_OrderHeader_Customer_CustomerId",
                         column: x => x.CustomerId,
-                        principalSchema: "Customer",
+                        principalSchema: "Person",
                         principalTable: "Customer",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -300,7 +297,7 @@ namespace Marketplace.EfCore.Migrations
                     table.ForeignKey(
                         name: "FK_ProductOffer_Seller_SellerId",
                         column: x => x.SellerId,
-                        principalSchema: "Seller",
+                        principalSchema: "Person",
                         principalTable: "Seller",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -454,7 +451,7 @@ namespace Marketplace.EfCore.Migrations
 
             migrationBuilder.DropTable(
                 name: "Customer",
-                schema: "Customer");
+                schema: "Person");
 
             migrationBuilder.DropTable(
                 name: "Product",
@@ -462,7 +459,7 @@ namespace Marketplace.EfCore.Migrations
 
             migrationBuilder.DropTable(
                 name: "Seller",
-                schema: "Seller");
+                schema: "Person");
 
             migrationBuilder.DropTable(
                 name: "Category",

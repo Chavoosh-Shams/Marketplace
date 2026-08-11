@@ -1,36 +1,37 @@
-﻿using System.Net;
-using Marketplace.EfCore;
-using ResponseFramework;
-using Microsoft.EntityFrameworkCore;
-using InvoiceApp.Frameworks.ResponseFrameworks;
-using Marketplace.RepositoryDesignPattern.Contracts;
-using Marketplace.Domain.Aggregates.CustomerAggregates;
+﻿using InvoiceApp.Frameworks.ResponseFrameworks;
 using InvoiceApp.Frameworks.ResponseFrameworks.Contracts;
+using Marketplace.Domain.Aggregates.PersonAggregates;
+using Marketplace.Domain.Aggregates.ProductAggregates;
+using Marketplace.EfCore;
+using Marketplace.RepositoryDesignPattern.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
+using ResponseFramework;
+using System.Net;
 
-namespace Marketplace.RepositoryDesignPattern.Services
+
+namespace Marketplace.RepositoryDesignPattern.Services.Repositories
 {
-    public class CustomerRepository : ICustomerRepository
+    public class CategoryRepository : ICategoryRepository
     {
-
         #region [- PrivateField -]
         private readonly MarketplaceDbContext _context;
         #endregion
 
         #region [- ctor -]
-        public CustomerRepository(MarketplaceDbContext context)
+        public CategoryRepository(MarketplaceDbContext context)
         {
             _context = context;
         }
         #endregion
 
         #region [- InsertAsync() -]
-        public async Task<IResponse<Customer>> InsertAsync(Customer customer)
+        public async Task<IResponse<Category>> InsertAsync(Category category)
         {
             try
             {
-                if (customer == null)
+                if (category == null)
                 {
-                    return new Response<Customer>(
+                    return new Response<Category>(
                         false,
                         HttpStatusCode.BadRequest,
                         ResponseMessages.NullInput,
@@ -39,19 +40,19 @@ namespace Marketplace.RepositoryDesignPattern.Services
                 }
                 else
                 {
-                    await _context.AddAsync(customer);
+                    await _context.AddAsync(category);
                     await _context.SaveChangesAsync();
-                    return new Response<Customer>(
+                    return new Response<Category>(
                         true,
                         HttpStatusCode.Created,
                         ResponseMessages.SuccessfullOperation,
-                        customer);
+                        category);
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return new Response<Customer>(
+                return new Response<Category>(
                     false,
                     HttpStatusCode.InternalServerError,
                     ResponseMessages.Error,
@@ -62,13 +63,13 @@ namespace Marketplace.RepositoryDesignPattern.Services
         #endregion
 
         #region [- UpdateAsync() -]
-        public async Task<IResponse<Customer>> UpdateAsync(Customer customer)
+        public async Task<IResponse<Category>> UpdateAsync(Category category)
         {
             try
             {
-                if (customer == null)
+                if (category == null)
                 {
-                    return new Response<Customer>(
+                    return new Response<Category>(
                         false,
                         HttpStatusCode.BadRequest,
                         ResponseMessages.NullInput,
@@ -77,10 +78,10 @@ namespace Marketplace.RepositoryDesignPattern.Services
                 }
                 else
                 {
-                    var existingCustomer = await _context.Set<Customer>().SingleOrDefaultAsync(c => c.GuidKey == customer.GuidKey);
-                    if (existingCustomer == null)
+                    var existingCategory = await _context.Set<Category>().SingleOrDefaultAsync(c => c.GuidKey == category.GuidKey);
+                    if (existingCategory == null)
                     {
-                        return new Response<Customer>(
+                        return new Response<Category>(
                             false,
                             HttpStatusCode.NotFound,
                             ResponseMessages.NotFound,
@@ -89,13 +90,14 @@ namespace Marketplace.RepositoryDesignPattern.Services
                     }
                     else
                     {
-                        _context.Entry(existingCustomer).CurrentValues.SetValues(customer);
+                        existingCategory.Title = category.Title;
+                        _context.Update(existingCategory);
                         await _context.SaveChangesAsync();
-                        return new Response<Customer>(
+                        return new Response<Category>(
                             true,
                             HttpStatusCode.OK,
                             ResponseMessages.SuccessfullOperation,
-                            existingCustomer
+                            existingCategory
                             );
                     }
                 }
@@ -103,7 +105,7 @@ namespace Marketplace.RepositoryDesignPattern.Services
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return new Response<Customer>(
+                return new Response<Category>(
                     false,
                     HttpStatusCode.InternalServerError,
                     ResponseMessages.Error,
@@ -114,14 +116,14 @@ namespace Marketplace.RepositoryDesignPattern.Services
         #endregion
 
         #region [- DeleteAsync() -]
-        public async Task<IResponse<Customer>> DeleteAsync(Customer customer)
+        public async Task<IResponse<Category>> DeleteAsync(Category category)
         {
             try
             {
 
-                if (customer == null)
+                if (category == null)
                 {
-                    return new Response<Customer>(
+                    return new Response<Category>(
                         false,
                         HttpStatusCode.BadRequest,
                         ResponseMessages.NullInput,
@@ -130,10 +132,10 @@ namespace Marketplace.RepositoryDesignPattern.Services
                 }
                 else
                 {
-                    var existingCustomer = await _context.Set<Customer>().SingleOrDefaultAsync(c => c.GuidKey == customer.GuidKey);
-                    if (existingCustomer == null)
+                    var existingCategory = await _context.Set<Category>().SingleOrDefaultAsync(c => c.GuidKey == category.GuidKey);
+                    if (existingCategory == null)
                     {
-                        return new Response<Customer>(
+                        return new Response<Category>(
                             false,
                             HttpStatusCode.NotFound,
                             ResponseMessages.NotFound,
@@ -142,14 +144,14 @@ namespace Marketplace.RepositoryDesignPattern.Services
                     }
                     else
                     {
-                        existingCustomer.IsDeleted = true;
-                        _context.Update(existingCustomer);
+                        existingCategory.IsDeleted = true;
+                        _context.Update(existingCategory);
                         await _context.SaveChangesAsync();
-                        return new Response<Customer>(
+                        return new Response<Category>(
                             true,
                             HttpStatusCode.OK,
                             ResponseMessages.SuccessfullOperation,
-                            existingCustomer
+                            existingCategory
                             );
                     }
 
@@ -158,7 +160,7 @@ namespace Marketplace.RepositoryDesignPattern.Services
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return new Response<Customer>(
+                return new Response<Category>(
                     false,
                     HttpStatusCode.InternalServerError,
                     ResponseMessages.Error,
@@ -169,13 +171,13 @@ namespace Marketplace.RepositoryDesignPattern.Services
         #endregion
 
         #region [- SelectByIdAsync() -]
-        public async Task<IResponse<Customer>> SelectByIdAsync(Customer customer)
+        public async Task<IResponse<Category>> SelectByIdAsync(Category category)
         {
             try
             {
-                if (customer == null)
+                if (category == null)
                 {
-                    return new Response<Customer>(
+                    return new Response<Category>(
                         false,
                         HttpStatusCode.BadRequest,
                         ResponseMessages.NullInput,
@@ -184,10 +186,10 @@ namespace Marketplace.RepositoryDesignPattern.Services
                 }
                 else
                 {
-                    var existingCustomer = await _context.Set<Customer>().SingleOrDefaultAsync(c => c.GuidKey == customer.GuidKey);
-                    if (existingCustomer == null)
+                    var existingCategory = await _context.Set<Category>().SingleOrDefaultAsync(c => c.GuidKey == category.GuidKey);
+                    if (existingCategory == null)
                     {
-                        return new Response<Customer>(
+                        return new Response<Category>(
                             false,
                             HttpStatusCode.NotFound,
                             ResponseMessages.NotFound,
@@ -196,11 +198,11 @@ namespace Marketplace.RepositoryDesignPattern.Services
                     }
                     else
                     {
-                        return new Response<Customer>(
+                        return new Response<Category>(
                            true,
                            HttpStatusCode.OK,
                            ResponseMessages.SuccessfullOperation,
-                           existingCustomer);
+                           existingCategory);
                     }
 
                 }
@@ -208,7 +210,7 @@ namespace Marketplace.RepositoryDesignPattern.Services
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return new Response<Customer>(
+                return new Response<Category>(
                     false,
                     HttpStatusCode.InternalServerError,
                     ResponseMessages.Error,
@@ -219,21 +221,21 @@ namespace Marketplace.RepositoryDesignPattern.Services
         #endregion
 
         #region [- SelectAllAsync() -]
-        public async Task<IResponse<IEnumerable<Customer>>> SelectAllAsync()
+        public async Task<IResponse<IEnumerable<Category>>> SelectAllAsync()
         {
             try
             {
-                var customers = await _context.Set<Customer>().AsNoTracking().ToListAsync();
-                return new Response<IEnumerable<Customer>>(
+                var categories = await _context.Set<Category>().AsNoTracking().ToListAsync();
+                return new Response<IEnumerable<Category>>(
                    true,
                    HttpStatusCode.OK,
                    ResponseMessages.SuccessfullOperation,
-                   customers);
+                   categories);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return new Response<IEnumerable<Customer>>(
+                return new Response<IEnumerable<Category>>(
                     false,
                     HttpStatusCode.InternalServerError,
                     ResponseMessages.Error,
@@ -242,6 +244,5 @@ namespace Marketplace.RepositoryDesignPattern.Services
             }
         }
         #endregion
-
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System.Net;
 using ResponseFramework;
 using InvoiceApp.Frameworks.ResponseFrameworks;
-using Marketplace.RepositoryDesignPattern.Contracts;
 using InvoiceApp.ApplicationServices.Dtos.CustomerDtos;
-using Marketplace.Domain.Aggregates.CustomerAggregates;
 using InvoiceApp.ApplicationServices.Services.Contracts;
 using InvoiceApp.Frameworks.ResponseFrameworks.Contracts;
+using Marketplace.Domain.Aggregates.PersonAggregates;
+using Marketplace.RepositoryDesignPattern.Services.Contracts;
 
 namespace Marketplace.Application.Services
 {

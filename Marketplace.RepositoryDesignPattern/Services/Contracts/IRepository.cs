@@ -1,6 +1,6 @@
 ﻿using InvoiceApp.Frameworks.ResponseFrameworks.Contracts;
 
-namespace Marketplace.RepositoryDesignPattern.Contracts
+namespace Marketplace.RepositoryDesignPattern.Services.Contracts
 {
     public interface IRepository<T> where T : class
     {

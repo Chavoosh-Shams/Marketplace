@@ -1,5 +1,5 @@
-﻿using Marketplace.Domain.Aggregates.SellerAggregates;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Marketplace.Domain.Aggregates.PersonAggregates;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Marketplace.EfCore.Configurations
@@ -8,7 +8,7 @@ namespace Marketplace.EfCore.Configurations
     {
         public void Configure(EntityTypeBuilder<Seller> builder)
         {
-            builder.ToTable("Seller", "Seller");
+            builder.ToTable("Seller", "Person");
 
             builder.HasKey(s => s.Id);
 

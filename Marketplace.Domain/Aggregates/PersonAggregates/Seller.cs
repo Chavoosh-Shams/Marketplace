@@ -1,7 +1,7 @@
 ﻿using Marketplace.Domain.Frameworks.Abstracts;
 using Marketplace.Domain.Aggregates.OfferAggregate;
 
-namespace Marketplace.Domain.Aggregates.SellerAggregates
+namespace Marketplace.Domain.Aggregates.PersonAggregates
 {
     public class Seller : IDbSetEntity
     {

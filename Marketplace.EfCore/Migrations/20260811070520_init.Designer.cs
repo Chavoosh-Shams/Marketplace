@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Marketplace.EfCore.Migrations
 {
     [DbContext(typeof(MarketplaceDbContext))]
-    [Migration("20260807193958_init")]
+    [Migration("20260811070520_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -24,50 +24,6 @@ namespace Marketplace.EfCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Marketplace.Domain.Aggregates.CustomerAggregates.Customer", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<Guid>("GuidKey")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Customer", "Customer");
-                });
 
             modelBuilder.Entity("Marketplace.Domain.Aggregates.OfferAggregate.ProductOffer", b =>
                 {
@@ -184,6 +140,86 @@ namespace Marketplace.EfCore.Migrations
                     b.ToTable("OrderHeader", "Order");
                 });
 
+            modelBuilder.Entity("Marketplace.Domain.Aggregates.PersonAggregates.Customer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<Guid>("GuidKey")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customer", "Person");
+                });
+
+            modelBuilder.Entity("Marketplace.Domain.Aggregates.PersonAggregates.Seller", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<Guid>("GuidKey")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("StoreName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Seller", "Person");
+                });
+
             modelBuilder.Entity("Marketplace.Domain.Aggregates.ProductAggregates.Category", b =>
                 {
                     b.Property<Guid>("Id")
@@ -240,42 +276,6 @@ namespace Marketplace.EfCore.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Product", "Product");
-                });
-
-            modelBuilder.Entity("Marketplace.Domain.Aggregates.SellerAggregates.Seller", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<Guid>("GuidKey")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("StoreName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Seller", "Seller");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -484,7 +484,7 @@ namespace Marketplace.EfCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Marketplace.Domain.Aggregates.SellerAggregates.Seller", "Seller")
+                    b.HasOne("Marketplace.Domain.Aggregates.PersonAggregates.Seller", "Seller")
                         .WithMany("ProductOffers")
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -516,7 +516,7 @@ namespace Marketplace.EfCore.Migrations
 
             modelBuilder.Entity("Marketplace.Domain.Aggregates.OrderAggregates.OrderHeader", b =>
                 {
-                    b.HasOne("Marketplace.Domain.Aggregates.CustomerAggregates.Customer", "Customer")
+                    b.HasOne("Marketplace.Domain.Aggregates.PersonAggregates.Customer", "Customer")
                         .WithMany("OrderHeaders")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -587,11 +587,6 @@ namespace Marketplace.EfCore.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Marketplace.Domain.Aggregates.CustomerAggregates.Customer", b =>
-                {
-                    b.Navigation("OrderHeaders");
-                });
-
             modelBuilder.Entity("Marketplace.Domain.Aggregates.OfferAggregate.ProductOffer", b =>
                 {
                     b.Navigation("OrderDetails");
@@ -602,17 +597,22 @@ namespace Marketplace.EfCore.Migrations
                     b.Navigation("OrderDetails");
                 });
 
+            modelBuilder.Entity("Marketplace.Domain.Aggregates.PersonAggregates.Customer", b =>
+                {
+                    b.Navigation("OrderHeaders");
+                });
+
+            modelBuilder.Entity("Marketplace.Domain.Aggregates.PersonAggregates.Seller", b =>
+                {
+                    b.Navigation("ProductOffers");
+                });
+
             modelBuilder.Entity("Marketplace.Domain.Aggregates.ProductAggregates.Category", b =>
                 {
                     b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Marketplace.Domain.Aggregates.ProductAggregates.Product", b =>
-                {
-                    b.Navigation("ProductOffers");
-                });
-
-            modelBuilder.Entity("Marketplace.Domain.Aggregates.SellerAggregates.Seller", b =>
                 {
                     b.Navigation("ProductOffers");
                 });

@@ -1,7 +1,7 @@
 ﻿using Marketplace.Domain.Frameworks.Abstracts;
 using Marketplace.Domain.Aggregates.OrderAggregates;
 
-namespace Marketplace.Domain.Aggregates.CustomerAggregates
+namespace Marketplace.Domain.Aggregates.PersonAggregates
 {
     public class Customer : IDbSetEntity
     {

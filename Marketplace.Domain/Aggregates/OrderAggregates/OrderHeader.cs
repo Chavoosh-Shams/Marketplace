@@ -1,5 +1,5 @@
-﻿using Marketplace.Domain.Frameworks.Abstracts;
-using Marketplace.Domain.Aggregates.CustomerAggregates;
+﻿using Marketplace.Domain.Aggregates.PersonAggregates;
+using Marketplace.Domain.Frameworks.Abstracts;
 
 namespace Marketplace.Domain.Aggregates.OrderAggregates
 {

@@ -6,7 +6,7 @@ namespace InvoiceApp.ApplicationServices.Dtos.CustomerDtos
     public class PostCustomerDto
     {
         [JsonIgnore]
-        public Guid GuidKey { get; set; }
+        public Guid GuidKey { get; private set; }
         public PostCustomerDto()
         {
             GuidKey = Guid.NewGuid();

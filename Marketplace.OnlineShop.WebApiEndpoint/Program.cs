@@ -1,8 +1,8 @@
 using InvoiceApp.ApplicationServices.Services.Contracts;
 using Marketplace.Application.Services;
 using Marketplace.EfCore;
-using Marketplace.RepositoryDesignPattern.Contracts;
-using Marketplace.RepositoryDesignPattern.Services;
+using Marketplace.RepositoryDesignPattern.Services.Contracts;
+using Marketplace.RepositoryDesignPattern.Services.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
