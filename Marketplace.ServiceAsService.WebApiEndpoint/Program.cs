@@ -1,3 +1,5 @@
+using InvoiceApp.ApplicationServices.Services;
+using InvoiceApp.ApplicationServices.Services.Contracts;
 using Marketplace.Application.Services;
 using Marketplace.Application.Services.Contracts;
 using Marketplace.EfCore;
@@ -20,6 +22,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkSto
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryApplicationService, CategoryApplicationService>();
 
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductApplicationService, ProductApplicationService>();
 #endregion
 
 builder.Services.AddControllers();

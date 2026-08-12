@@ -178,7 +178,10 @@ namespace Marketplace.RepositoryDesignPattern.Services.Repositories
                 }
                 else
                 {
-                    var existingProduct = await _context.Set<Product>().SingleOrDefaultAsync(p => p.GuidKey == product.GuidKey);
+                    var existingProduct = await _context.Set<Product>()
+                        .Include(p=>p.Category)
+                        .AsNoTracking()
+                        .SingleOrDefaultAsync(p => p.GuidKey == product.GuidKey);
                     if (existingProduct == null)
                     {
                         return new Response<Product>(
@@ -216,7 +219,10 @@ namespace Marketplace.RepositoryDesignPattern.Services.Repositories
         {
             try
             {
-                var products = await _context.Set<Product>().AsNoTracking().ToListAsync();
+                var products = await _context.Set<Product>()
+                    .Include(p => p.Category)
+                    .AsNoTracking()
+                    .ToListAsync();
                 return new Response<IEnumerable<Product>>(
                     true,
                    HttpStatusCode.OK,

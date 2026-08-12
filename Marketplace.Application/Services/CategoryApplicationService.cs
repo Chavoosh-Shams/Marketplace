@@ -204,6 +204,7 @@ namespace Marketplace.Application.Services
             {
                 var result = categories.Value.Select(category => new GetAllCategoryDto()
                 {
+                    Id = category.Id,
                     GuidKey = category.GuidKey,
                     Title = category.Title
                 }).ToList();
