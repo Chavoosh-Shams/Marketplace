@@ -24,6 +24,10 @@ builder.Services.AddScoped<ICategoryApplicationService, CategoryApplicationServi
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductApplicationService, ProductApplicationService>();
+
+builder.Services.AddScoped<ISellerRepository, SellerRepository>();
+builder.Services.AddScoped<ISellerApplicationService, SellerApplicationService>();
+
 #endregion
 
 builder.Services.AddControllers();

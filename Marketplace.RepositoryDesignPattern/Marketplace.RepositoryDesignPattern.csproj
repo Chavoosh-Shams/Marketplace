@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Databases\StoredProcedures\" />
+    <Folder Include="Databases\StoredProcedures\OrderHeaderStoredProcedures\" />
+    <Folder Include="Databases\StoredProcedures\ProductOfferStoredProcedures\" />
   </ItemGroup>
 
 </Project>
