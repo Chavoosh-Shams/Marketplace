@@ -2,7 +2,7 @@
 {
     public class PutCustomerDto
     {
-        public Guid GuidKey { get; set; }
+        public Guid GuidKey { get; private set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }

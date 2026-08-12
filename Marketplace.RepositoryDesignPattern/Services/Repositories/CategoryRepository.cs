@@ -1,12 +1,11 @@
-﻿using InvoiceApp.Frameworks.ResponseFrameworks;
-using InvoiceApp.Frameworks.ResponseFrameworks.Contracts;
-using Marketplace.Domain.Aggregates.PersonAggregates;
-using Marketplace.Domain.Aggregates.ProductAggregates;
-using Marketplace.EfCore;
-using Marketplace.RepositoryDesignPattern.Services.Contracts;
-using Microsoft.EntityFrameworkCore;
+﻿using System.Net;
 using ResponseFramework;
-using System.Net;
+using Marketplace.EfCore;
+using Microsoft.EntityFrameworkCore;
+using InvoiceApp.Frameworks.ResponseFrameworks;
+using Marketplace.Domain.Aggregates.ProductAggregates;
+using InvoiceApp.Frameworks.ResponseFrameworks.Contracts;
+using Marketplace.RepositoryDesignPattern.Services.Contracts;
 
 
 namespace Marketplace.RepositoryDesignPattern.Services.Repositories

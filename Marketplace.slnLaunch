@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Marketplace.ServiceAsService.WebApiEndpoint\\Marketplace.ServiceAsService.WebApiEndpoint.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Marketplace.OnlineShop.WebApiEndpoint\\Marketplace.OnlineShop.WebApiEndpoint.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

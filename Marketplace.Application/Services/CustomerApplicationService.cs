@@ -1,17 +1,16 @@
 ﻿using System.Net;
 using ResponseFramework;
 using InvoiceApp.Frameworks.ResponseFrameworks;
+using Marketplace.Domain.Aggregates.PersonAggregates;
 using InvoiceApp.ApplicationServices.Dtos.CustomerDtos;
 using InvoiceApp.ApplicationServices.Services.Contracts;
 using InvoiceApp.Frameworks.ResponseFrameworks.Contracts;
-using Marketplace.Domain.Aggregates.PersonAggregates;
 using Marketplace.RepositoryDesignPattern.Services.Contracts;
 
 namespace Marketplace.Application.Services
 {
     public class CustomerApplicationService : ICustomerApplicationService
     {
-
         #region [- PrivateField -]
         private readonly ICustomerRepository _customerRepository;
         #endregion
@@ -241,6 +240,5 @@ namespace Marketplace.Application.Services
             }
         }
         #endregion
-
     }
 }

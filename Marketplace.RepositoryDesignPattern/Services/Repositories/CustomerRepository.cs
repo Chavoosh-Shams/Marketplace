@@ -11,7 +11,6 @@ namespace Marketplace.RepositoryDesignPattern.Services.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
-
         #region [- PrivateField -]
         private readonly MarketplaceDbContext _context;
         #endregion
@@ -247,6 +246,5 @@ namespace Marketplace.RepositoryDesignPattern.Services.Repositories
             }
         }
         #endregion
-
     }
 }
