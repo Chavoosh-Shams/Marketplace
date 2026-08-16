@@ -4,11 +4,13 @@
     "Projects": [
       {
         "Path": "Marketplace.ServiceAsService.WebApiEndpoint\\Marketplace.ServiceAsService.WebApiEndpoint.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "http"
       },
       {
         "Path": "Marketplace.OnlineShop.WebApiEndpoint\\Marketplace.OnlineShop.WebApiEndpoint.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "http"
       }
     ]
   }

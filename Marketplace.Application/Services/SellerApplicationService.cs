@@ -219,7 +219,7 @@ namespace Marketplace.Application.Services
             {
                 var result = sellers.Value.Select(seller => new GetAllSellerDto()
                 {
-                    GuidKey = seller.GuidKey,
+                    Id = seller.Id,
                     FirstName = seller.FirstName,
                     LastName = seller.LastName,
                     StoreName = seller.StoreName,

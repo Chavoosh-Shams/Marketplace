@@ -21,12 +21,13 @@ namespace Marketplace.EfCore.Configurations
                 .WithMany(od => od.OrderDetails)
                 .HasForeignKey(od => od.OrderHeaderId)
                 .IsRequired()
-                 .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(od => od.ProductOffer)
                 .WithMany(po => po.OrderDetails)
                 .HasForeignKey(od => od.ProductOfferId)
-                .IsRequired();
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Property(c => c.IsDeleted).HasDefaultValue(false).IsRequired();
             builder.HasQueryFilter(c => !c.IsDeleted);

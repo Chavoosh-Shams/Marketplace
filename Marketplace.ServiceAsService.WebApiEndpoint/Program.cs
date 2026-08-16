@@ -1,12 +1,12 @@
-using InvoiceApp.ApplicationServices.Services;
-using InvoiceApp.ApplicationServices.Services.Contracts;
-using Marketplace.Application.Services;
-using Marketplace.Application.Services.Contracts;
 using Marketplace.EfCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Marketplace.Application.Services;
+using InvoiceApp.ApplicationServices.Services;
+using Marketplace.Application.Services.Contracts;
+using InvoiceApp.ApplicationServices.Services.Contracts;
 using Marketplace.RepositoryDesignPattern.Services.Contracts;
 using Marketplace.RepositoryDesignPattern.Services.Repositories;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +18,6 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkSto
 #endregion
 
 #region [- AddScoped<>() -]
-
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryApplicationService, CategoryApplicationService>();
 
@@ -28,6 +27,8 @@ builder.Services.AddScoped<IProductApplicationService, ProductApplicationService
 builder.Services.AddScoped<ISellerRepository, SellerRepository>();
 builder.Services.AddScoped<ISellerApplicationService, SellerApplicationService>();
 
+builder.Services.AddScoped<IProductOfferRepository, ProductOfferRepository>();
+builder.Services.AddScoped<IProductOfferApplicationService, ProductOfferApplicationService>();
 #endregion
 
 builder.Services.AddControllers();

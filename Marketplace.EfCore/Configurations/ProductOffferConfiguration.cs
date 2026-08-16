@@ -22,12 +22,14 @@ namespace Marketplace.EfCore.Configurations
             builder.HasOne(po => po.Product)
                 .WithMany(p => p.ProductOffers)
                 .HasForeignKey(po => po.ProductId)
-                .IsRequired();
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(po => po.Seller)
                 .WithMany(s => s.ProductOffers)
                 .HasForeignKey(po => po.SellerId)
-                .IsRequired();
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Property(c => c.IsDeleted).HasDefaultValue(false).IsRequired();
             builder.HasQueryFilter(c => !c.IsDeleted);
