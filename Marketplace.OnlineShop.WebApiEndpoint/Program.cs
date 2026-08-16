@@ -1,5 +1,6 @@
 using InvoiceApp.ApplicationServices.Services.Contracts;
 using Marketplace.Application.Services;
+using Marketplace.Application.Services.Contracts;
 using Marketplace.EfCore;
 using Marketplace.RepositoryDesignPattern.Services.Contracts;
 using Marketplace.RepositoryDesignPattern.Services.Repositories;
@@ -20,6 +21,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkSto
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerApplicationService, CustomerApplicationService>();
 
+builder.Services.AddScoped<IProductOfferRepository, ProductOfferRepository>();
+builder.Services.AddScoped<IProductOfferApplicationService, ProductOfferApplicationService>();
 #endregion
 
 builder.Services.AddControllers();
