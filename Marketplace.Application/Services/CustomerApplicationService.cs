@@ -172,6 +172,7 @@ namespace Marketplace.Application.Services
             {
                 var customer = new Customer()
                 {
+                    Id = getCustomerByIdDto.Id,
                     GuidKey = getCustomerByIdDto.GuidKey,
                     FirstName = getCustomerByIdDto.FirstName,
                     LastName = getCustomerByIdDto.LastName,
@@ -225,6 +226,7 @@ namespace Marketplace.Application.Services
             {
                 var result = customers.Value.Select(customer => new GetAllCustomerDto()
                 {
+                    Id = customer.Id,
                     GuidKey = customer.GuidKey,
                     FirstName = customer.FirstName,
                     LastName = customer.LastName,

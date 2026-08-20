@@ -2,6 +2,7 @@
 {
     public class GetAllProductDto
     {
+        public Guid Id { get; set; }
         public Guid GuidKey { get; set; }
         public Guid CategoryId { get; set; }
         public string CategoryTitle { get; set; }

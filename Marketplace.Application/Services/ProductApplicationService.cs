@@ -181,6 +181,7 @@ namespace InvoiceApp.ApplicationServices.Services
                 {
                     var responseDto = new GetProductByIdDto()
                     {
+                        Id = productDto.Value.Id,
                         GuidKey = productDto.Value.GuidKey,
                         CategoryId = productDto.Value.CategoryId,
                         CategoryTitle = productDto.Value.Category.Title,
@@ -213,6 +214,7 @@ namespace InvoiceApp.ApplicationServices.Services
             {
                 var result = products.Value.Select(product => new GetAllProductDto()
                 {
+                    Id = product.Id,
                     GuidKey = product.GuidKey,
                     CategoryId = product.CategoryId,
                     CategoryTitle = product.Category.Title,

@@ -159,6 +159,7 @@ namespace Marketplace.Application.Services
             {
                 var category = new Category()
                 {
+                    Id = getByIdCategoryDto.Id,
                     GuidKey = getByIdCategoryDto.GuidKey,
                     Title = getByIdCategoryDto.Title
                 };
@@ -175,6 +176,7 @@ namespace Marketplace.Application.Services
                 {
                     var responseDto = new GetByIdCategoryDto()
                     {
+                        Id = categoryDto.Value.Id,
                         GuidKey = categoryDto.Value.GuidKey,
                         Title = categoryDto.Value.Title
                     };

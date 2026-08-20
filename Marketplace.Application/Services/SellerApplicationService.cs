@@ -1,11 +1,12 @@
-﻿using System.Net;
-using ResponseFramework;
+﻿using InvoiceApp.Frameworks.ResponseFrameworks;
+using InvoiceApp.Frameworks.ResponseFrameworks.Contracts;
+using Marketplace.Application.Dtos;
 using Marketplace.Application.Dtos.SellerDtos;
-using InvoiceApp.Frameworks.ResponseFrameworks;
 using Marketplace.Application.Services.Contracts;
 using Marketplace.Domain.Aggregates.PersonAggregates;
-using InvoiceApp.Frameworks.ResponseFrameworks.Contracts;
 using Marketplace.RepositoryDesignPattern.Services.Contracts;
+using ResponseFramework;
+using System.Net;
 
 namespace Marketplace.Application.Services
 {
@@ -168,6 +169,7 @@ namespace Marketplace.Application.Services
             {
                 var seller = new Seller()
                 {
+                    Id = getByIdSellerDto.Id,
                     GuidKey = getByIdSellerDto.GuidKey,
                     FirstName = getByIdSellerDto.FirstName,
                     LastName = getByIdSellerDto.LastName,

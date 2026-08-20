@@ -235,6 +235,7 @@ namespace Marketplace.Application.Services
             {
                 var result = productOffers.Value.Select(productOffer => new GetAllProductOfferDto()
                 {
+                    Id = productOffer.Id,
                     GuidKey = productOffer.GuidKey,
                     ProductId = productOffer.ProductId,
                     ProductTitle = productOffer.Product.Title,

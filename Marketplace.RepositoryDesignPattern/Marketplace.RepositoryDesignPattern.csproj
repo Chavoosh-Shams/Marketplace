@@ -12,8 +12,4 @@
     <ProjectReference Include="..\ResponseFramework\ResponseFramework.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Databases\StoredProcedures\OrderHeaderStoredProcedures\" />
-  </ItemGroup>
-
 </Project>

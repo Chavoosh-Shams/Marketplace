@@ -1,3 +1,4 @@
+using InvoiceApp.ApplicationServices.Services;
 using InvoiceApp.ApplicationServices.Services.Contracts;
 using Marketplace.Application.Services;
 using Marketplace.Application.Services.Contracts;
@@ -23,6 +24,9 @@ builder.Services.AddScoped<ICustomerApplicationService, CustomerApplicationServi
 
 builder.Services.AddScoped<IProductOfferRepository, ProductOfferRepository>();
 builder.Services.AddScoped<IProductOfferApplicationService, ProductOfferApplicationService>();
+
+builder.Services.AddScoped<IOrderHeaderRepository, OrderHeaderRepository>();
+builder.Services.AddScoped<IOrderHeaderApplicationService, OrderHeaderApplicationService>();
 #endregion
 
 builder.Services.AddControllers();
